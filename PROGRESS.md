@@ -9,10 +9,10 @@
 - [x] Practice Scanner class usage
 
 ### Exercise 2: Variables and Basic Operations
-- [ ] Simple Calculator Implementation
-  - [ ] Handle number input
-  - [ ] Implement operators (+, -, *, /)
-  - [ ] Handle division by zero
+- [x] Simple Calculator Implementation
+  - [x] Handle number input
+  - [x] Implement operators (+, -, *, /)
+  - [x] Handle division by zero
   - [ ] Test with different inputs
 
 ### Exercise 3: Arrays and Loops
