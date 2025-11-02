@@ -1,17 +1,23 @@
 package th.ac.kmutt.cpe.algorithm.pawarisa.searching;
 
-public class SearchContext<T extends Comparable<T>> {
-    private SearchStrategy<T> strategy;
+import java.util.ArrayList;
 
-    public SearchContext(SearchStrategy<T> strategy) {
+public class SearchContext<T extends Comparable<T>, R> {
+    private SearchStrategy<T, R> strategy;
+
+    public SearchContext(SearchStrategy<T, R> strategy) {
         this.strategy = strategy;
     }
 
-    public void setSearchStrategy(SearchStrategy<T> strategy) {
+    public void SetStrategy(SearchStrategy<T, R> strategy) {
         this.strategy = strategy;
     }
 
-    public int executeBeadsSearch(String beads, char target1, char target2, int size) {
-        return strategy.searchBeads(beads, target1, target2, size);
+    public R executeSearch(ArrayList<T> list, T target) {
+        return strategy.search(list, target);
+    }
+
+    public SearchStrategy<T, R> getStrategy() {
+        return this.strategy;
     }
 }

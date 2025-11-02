@@ -9,11 +9,15 @@ public class SortContext<T extends Comparable<T>> {
         this.strategy = strategy;
     }
 
-    public void setSortStrategy(SortStrategy<T> strategy) {
+    public void SetStrategy(SortStrategy<T> strategy) {
         this.strategy = strategy;
     }
 
-    public int executeSort(ArrayList<T> list, T target) {
-        return strategy.sort(list);
+    public void executeSort(ArrayList<T> list) {
+        strategy.sort(list);
+    }
+
+    public SortStrategy<T> getStrategy() {
+        return this.strategy;
     }
 }
