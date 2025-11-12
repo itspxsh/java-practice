@@ -10,7 +10,7 @@ cd Desktop
 mkdir MyExamCode
 cd MyExamCode
 
-MyExamCode/
+``` MyExamCode/
 ├── src/
 │   └── th/
 │       └── ac/
@@ -32,6 +32,7 @@ MyExamCode/
         ├── in1.txt
         ├── ...
         └── bonus2.txt
+```
 
 cd Desktop/MyExamCode
 
@@ -44,6 +45,7 @@ All commands are run from the project's root folder (`MyExamCode`).
 ### 1. Compile
 
 To compile all `.java` files from `src` into the `bin` folder:
+
 To run a specific problem, use the java -cp bin command and feed in a test case using <.:
 
 ```bash
