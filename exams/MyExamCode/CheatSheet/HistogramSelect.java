@@ -1,4 +1,4 @@
-package th.ac.kmutt.cpe.algorithm.pawarisa;
+package CheatSheet;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -39,6 +39,14 @@ public class HistogramSelect {
     /**
      * Recursive function to find the k-th (1-indexed) smallest element.
      */
+    /**
+     * Recursive function to find the k-th (1-indexed) smallest element.
+     * (Easier-to-remember version)
+     */
+    /**
+     * Recursive function to find the k-th (1-indexed) smallest element.
+     * (Easier-to-remember version)
+     */
     private static double findKthSmallest(ArrayList<Double> data, int b, int k) {
         
         // --- BASE CASES ---
@@ -46,11 +54,9 @@ public class HistogramSelect {
             return data.get(0);
         }
 
-        // Use our *own* min/max functions
         double min = findMin(data);
         double max = findMax(data);
 
-        // If all elements are the same, any one is the answer.
         if (min == max) {
             return min;
         }
@@ -60,21 +66,19 @@ public class HistogramSelect {
         // Step 1: Calculate width
         double width = (max - min) / b;
 
-        // Step 2: Count items in each bin
+        // Step 2: Count items in each bin (Same as before)
         int[] binCounts = new int[b];
         for (double val : data) {
             int binIndex = (int) ((val - min) / width);
-            
-            // Handle the edge case where val == max
-            if (binIndex == b) {
+            if (binIndex == b) { // Handle the edge case where val == max
                 binIndex = b - 1; 
             }
             binCounts[binIndex]++;
         }
 
-        // Step 3: Find the target bin (where k lives)
+        // Step 3: Find the target bin (Same as before)
         int targetBin = -1;
-        int cumulativeCount = 0; // Count of elements *before* the target bin
+        int cumulativeCount = 0; 
         for (int i = 0; i < b; i++) {
             if (cumulativeCount + binCounts[i] >= k) {
                 targetBin = i;
@@ -83,28 +87,28 @@ public class HistogramSelect {
             cumulativeCount += binCounts[i];
         }
 
-        // Step 4: Create new sub-list
-        double binStart = min + (targetBin * width);
-        double binEnd = binStart + width;
-        
+        // Step 4: Create new sub-list (This is now much simpler!)
         ArrayList<Double> subList = new ArrayList<>();
         for (double val : data) {
-            boolean inBin = (val >= binStart && val < binEnd);
-            // Must include the 'max' value check for the last bin
-            boolean isMaxInLastBin = (val == max && targetBin == b - 1);
-
-            if (inBin || isMaxInLastBin) {
+            // <-- CHANGED: Re-use the *exact* logic from Step 2
+            int binIndex = (int) ((val - min) / width);
+            if (binIndex == b) { // <-- CHANGED: Must include the edge case handle again
+                binIndex = b - 1;
+            }
+            
+            // <-- CHANGED: Just check if the bin index matches our target
+            if (binIndex == targetBin) {
                 subList.add(val);
             }
         }
 
-        // Step 5: Update k for the new sub-list
+        // Step 5: Update k for the new sub-list (Same as before)
         int newK = k - cumulativeCount;
 
-        // Step 6: Recurse
+        // Step 6: Recurse (Same as before)
         return findKthSmallest(subList, b, newK);
     }
-
+    
     // --- HELPER FUNCTIONS (EASY TO REMEMBER) ---
 
     /**

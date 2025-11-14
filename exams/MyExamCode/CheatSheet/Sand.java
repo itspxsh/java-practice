@@ -1,4 +1,4 @@
-package th.ac.kmutt.cpe.algorithm.pawarisa;
+package CheatSheet;
 
 import java.util.ArrayList;
 import java.util.Scanner;
